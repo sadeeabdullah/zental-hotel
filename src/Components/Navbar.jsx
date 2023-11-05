@@ -5,7 +5,8 @@ const Navbar = () => {
 //   const { user, logout } = useAuth();
 const { user, logout } = useAuth();
 return (
-    <div className=" w-full max-w-[1250px] px-[25px] mx-auto">
+    
+      <div className=" w-full max-w-[1250px] px-[25px] mx-auto ">
       <div className="flex-none lg:hidden">
         <label
           htmlFor="my-drawer-3"
