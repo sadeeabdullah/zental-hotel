@@ -3,7 +3,7 @@ import Container from './Container';
 const Footer = () => {
   return (
     <Container>
-      <div className="flex justify-between gap-10">
+      <div className="flex flex-col lg:flex-row justify-between gap-10">
         <div>
           <h1 className=" mb-2">
             <img src="src/assets/image/logo-20230222101241.svg" alt="" />
