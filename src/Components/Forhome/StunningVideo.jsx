@@ -1,7 +1,7 @@
 
 const StunningVideo = () => {
     return (
-        <div className=" mx-auto relative  mb-10">
+        <div className=" mx-auto relative  mb-12">
             <video autoPlay loop muted playsInline className="" >
                 <source src="src/assets/image/pexels-cottonbro-7507165 (Original).mp4" type="video/mp4"/>
             </video>

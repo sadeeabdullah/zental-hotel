@@ -2,7 +2,7 @@
 
 const SpecialOffer = () => {
     return (
-        <div className="w-[89vw] mx-auto">
+        <div className="w-[89vw] mt-8 mx-auto">
             <h2 className="text-4xl text-[#08476b] text-center mb-6 font-bold">Special offers</h2>
 
 
