@@ -5,6 +5,7 @@ import MyBookings from "../Pages/NormalPages/MyBookings";
 import Register from "../Pages/AuthRelated/Register";
 import Login from "../Pages/AuthRelated/Login";
 import Rooms from "../Pages/NormalPages/Rooms";
+import RoomDetailsPage from "../Pages/NormalPages/RoomDetailsPage";
 
 const routes = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const routes = createBrowserRouter([
           {
             path: 'rooms',
             element: <Rooms />,
+          },
+          {
+            path:'rooms/:id',
+            element: <RoomDetailsPage></RoomDetailsPage>
           },
           {
             path: 'mybookings',

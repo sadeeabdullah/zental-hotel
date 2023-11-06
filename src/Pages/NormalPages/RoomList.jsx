@@ -18,13 +18,16 @@ const RoomList = () => {
       }
       const allData = data.data;
     return (
-        <div className="mb-10 lg:mb-0">
+        <div className="mb-10 lg:mb-0 bg-gradient-to-r  from-[#f16f6e] to-[#08476b] inline-block bg-clip-text text-transparent">
+            <h2 className="text-2xl text-[#08476b] mb-4 font-semibold">
+        Available Rooms:
+      </h2>
             {
                     allData.map(singleData  => singleData?.booking_status === "available" && (
                         <div
                          key={singleData._id}>
                             <div >
-                                <p className="text-xl font-semibold text-gray-500">{singleData.room_title}</p>
+                                <p className="text-xl font-semibold ">{singleData.room_title}</p>
                             </div>
                         </div>
                     )
