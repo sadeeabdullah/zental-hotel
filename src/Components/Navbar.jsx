@@ -37,7 +37,7 @@ return (
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? 'btn bg-gradient-to-tr from-[rgb(231,159,159)] to-[rgb(238,123,123)] btn-sm' : 'btn btn-ghost btn-sm'
+              isActive ? 'btn bg-gradient-to-tr from-[rgb(231,159,159)] to-[rgb(238,123,123)] text-[#08476b] btn-sm' : 'btn btn-ghost btn-sm'
             }
           >
             Home
@@ -45,7 +45,7 @@ return (
           <NavLink
             to="/rooms"
             className={({ isActive }) =>
-              isActive ? 'btn bg-gradient-to-tr from-[#f16f6e] to-[rgb(238,123,123)] btn-sm' : 'btn btn-ghost btn-sm'
+              isActive ? 'btn bg-gradient-to-tr from-[rgb(231,159,159)] to-[rgb(238,123,123)] text-[#08476b] btn-sm' : 'btn btn-ghost btn-sm'
             }
           >
             Rooms
@@ -54,7 +54,7 @@ return (
           <NavLink
             to="/mybookings"
             className={({ isActive }) =>
-              isActive ? 'btn bg-gradient-to-tr from-[#f16f6e] to-[rgb(238,123,123)] btn-sm' : 'btn btn-ghost btn-sm'
+              isActive ? 'btn bg-gradient-to-tr from-[#f16f6e] to-[rgb(238,123,123)] text-[#08476b] btn-sm' : 'btn btn-ghost btn-sm'
             }
           >
             My Bookings
@@ -97,7 +97,7 @@ return (
             <NavLink
               to="/login"
               className={({ isActive }) =>
-                isActive ? 'btn bg-gradient-to-tr from-[rgb(231,159,159)] to-[rgb(238,123,123)] btn-sm' : 'btn btn-ghost btn-sm'
+                isActive ? 'btn bg-gradient-to-tr from-[rgb(231,159,159)] to-[rgb(238,123,123)] text-[#08476b] btn-sm' : 'btn btn-ghost btn-sm'
               }
             >
               Login

@@ -10,6 +10,8 @@ import {
   import { createContext, useEffect, useState } from 'react';
   import PropTypes from 'prop-types';
 import { auth } from '../config/firebase.config';
+import useAxios from '../Hooks/useAxios';
+import { useQuery } from '@tanstack/react-query';
   
   export const AuthContext = createContext();
   const googleProvider = new GoogleAuthProvider();
@@ -50,8 +52,22 @@ import { auth } from '../config/firebase.config';
         return unsubscribe();
       };
     }, []);
+
+
+    // for fetching the data of room 
+    const axios = useAxios();
+    const getRoomsData =async () => {
+        // const res = axios.get('http://localhost:5000/api/v1/rooms')
+        const res = await axios.get('rooms')
+        return res ;
+    }
+    const query = useQuery({
+        queryKey: ['roomsData'],
+        queryFn: getRoomsData,
+    })
+
   
-    const values = { createUser, login, user, isLoading, logout, googleLogin };
+    const values = { createUser, login, user, isLoading, logout, googleLogin , query };
   
     return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
   };
