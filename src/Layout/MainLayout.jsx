@@ -9,7 +9,7 @@ const MainLayout = ({ children }) => {
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
-        <div className="w-full navbar bg-transparent backdrop-blur-sm sticky top-0 z-50 ">
+        <div className="w-full navbar bg-base-300 backdrop-blur-sm sticky top-0 z-50 ">
           <Navbar />
         </div>
         {/* Page content here */}
