@@ -4,8 +4,12 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import RoomList from "./RoomList";
 import { Link } from "react-router-dom";
 import Error from "./Error";
+import { addDays, isBefore } from "date-fns";
 
 const Rooms = () => {
+  const presentDate = new Date();
+  const tomorrow = addDays(presentDate,1)
+  console.log(isBefore(presentDate,tomorrow))
   const { query } = useContext(AuthContext);
   const { data, isLoading, isError} = query;
   if (isLoading) {
