@@ -10,11 +10,12 @@ import Error from "./Error";
 import { DatePicker } from "antd";
 import moment from "moment";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const RoomDetailsPage = () => {
   // const axios = useAxios();
   const params = useParams();
-  const { query } = useContext(AuthContext);
+  const { query , user } = useContext(AuthContext);
   const { data, isLoading, isError } = query;
   const [selectedDate, setSelectedDate] = useState(null);
   
@@ -35,13 +36,14 @@ const RoomDetailsPage = () => {
 
   const findedRoom = allData.find((finded) => finded._id === params.id);
   const {
+    _id,
     room_title,
     room_description,
     price_per_night,
     room_size,
     image1,
     image2,
-    booking_duration,
+    seat_count,
     special_offers,
     booking_status,
   } = findedRoom;
@@ -51,26 +53,45 @@ const RoomDetailsPage = () => {
     const handleDateChange = (date, dateString) => {
       setSelectedDate(dateString);
   }
-console.log(selectedDate)
 
 
   // console.log(booking_duration);
   const handleBook = async () => {
-    console.log(findedRoom);
+    if(selectedDate !== null ){
+      await axios.post("http://localhost:5000/api/v1/create-bookings", {
+        room_title : room_title,
+        room_description : room_description,
+        price_per_night : price_per_night,
+        room_size : room_size,
+        image1 : image1,
+        image2 : image2,
+        booking_duration : selectedDate,
+        special_offers : special_offers,
+        user_email : user.email,
+      })
+      .then(res => {if(res.status === 200){
+        toast.success("Successfully booked")
+      }})
+      .then(err => console.log(err))
+
+      axios.patch("http://localhost:5000/api/v1/booked",{
+        availiblity : "unavailble",
+        id: _id,
+      })
+      .then(res => console.log(res))
+      .then(err =>console.log(err))
+
+
+
+      // for updating while the room is booked
+
+    }
+
+    else{
+      toast.error('please select a date')
+    }
     
-    await axios.post("http://localhost:5000/api/v1/create-bookings", {
-      room_title : room_title,
-      room_description : room_description,
-      price_per_night : price_per_night,
-      room_size : room_size,
-      image1 : image1,
-      image2 : image2,
-      booking_duration : "",
-      special_offers : special_offers,
-      booking_status : booking_status,
-    })
-    .then(res => console.log(res))
-    .then(err => console.log(err))
+    
     
     // update bookings
   };
@@ -122,6 +143,10 @@ console.log(selectedDate)
         <p className="mb-2">
           <span className="font-bold">Room Space : </span>
           {room_size}
+        </p>
+        <p className="mb-2">
+          <span className="font-bold">Seat available : </span>
+          {seat_count}
         </p>
 
 

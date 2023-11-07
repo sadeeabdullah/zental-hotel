@@ -43,6 +43,7 @@ import { useQuery } from '@tanstack/react-query';
     };
   
     useEffect(() => {
+      
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
         setIsLoading(false);
@@ -57,7 +58,6 @@ import { useQuery } from '@tanstack/react-query';
     // for fetching the data of room 
     const axios = useAxios();
     const getRoomsData =async () => {
-        // const res = axios.get('http://localhost:5000/api/v1/rooms')
         const res = await axios.get('rooms')
         return res ;
     }
