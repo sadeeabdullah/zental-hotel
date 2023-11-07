@@ -6,11 +6,13 @@ import Register from "../Pages/AuthRelated/Register";
 import Login from "../Pages/AuthRelated/Login";
 import Rooms from "../Pages/NormalPages/Rooms";
 import RoomDetailsPage from "../Pages/NormalPages/RoomDetailsPage";
+import Error from "../Pages/NormalPages/Error";
 
 const routes = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement: <Error></Error>,
         children: [
           {
             index: true,

@@ -3,10 +3,11 @@ import Loading from "../../Components/Loading/Loading";
 import { AuthContext } from "../../Provider/AuthProvider";
 import RoomList from "./RoomList";
 import { Link } from "react-router-dom";
+import Error from "./Error";
 
 const Rooms = () => {
   const { query } = useContext(AuthContext);
-  const { data, isLoading, isError, error } = query;
+  const { data, isLoading, isError} = query;
   if (isLoading) {
     return (
       <div
@@ -18,7 +19,7 @@ const Rooms = () => {
     );
   }
   if (isError) {
-    return <p>something went wrong:${error.message}</p>;
+    return <Error></Error>;
   }
   const allData = data.data;
 
