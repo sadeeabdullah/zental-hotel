@@ -60,7 +60,6 @@ const {data,isLoading,isError} = query
                   <Link to={`/rooms/${singleData._id}`}>
 
                   <div
-                  
                   className="relative group">
                    <img
                      className="rounded-xl lg:h-[40vh] md:h w-full"
