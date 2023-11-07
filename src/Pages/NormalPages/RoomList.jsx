@@ -1,10 +1,19 @@
-import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
+
 import Loading from "../../Components/Loading/Loading";
+import useAxios from "../../Hooks/useAxios";
+import { useQuery } from "@tanstack/react-query";
 
 
 const RoomList = () => {
-    const {query} = useContext(AuthContext);
+    const axios = useAxios();
+    const getRoomsData =async () => {
+        const res =  axios.get('rooms')
+        return res ;
+    }
+    const query = useQuery({
+        queryKey: ['roomsData'],
+        queryFn: getRoomsData,
+    })
     const {data, isLoading , isError,error} = query;
 
     if(isLoading){
@@ -23,7 +32,7 @@ const RoomList = () => {
         Available Rooms:
       </h2>
             {
-                    allData.map(singleData  => singleData?.booking_status === "available" && (
+                    allData.map(singleData  =>
                         <div
                          key={singleData._id}>
                             <div >
@@ -31,7 +40,7 @@ const RoomList = () => {
                             </div>
                         </div>
                     )
-                    )
+                    
                 }
         </div>
     );

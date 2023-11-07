@@ -1,0 +1,98 @@
+[
+    {
+      "room_description": "A spacious and comfortable deluxe double room with modern amenities. Ideal for couples or solo travelers.",
+      "room_title": "Deluxe Double Room",
+      "price_per_night": 150,
+      "room_size": "350 sq ft",
+      "image1": "https://i.ibb.co/PmgPyG8/photo-of-a-desk-and-white-corner-seating-area.jpg",
+      "image2": "https://i.ibb.co/P1RwhKS/bright-hotel-room-bed.jpg",
+      "booking_duration": "",
+      "special_offers": "Free breakfast included",
+      "seat_count": 2,
+      "booking_status": "available"
+    },
+    {
+      "room_title": "Standard Single Room",
+      "room_description": "A cozy and budget-friendly single room with essential amenities. Perfect for solo travelers.",
+      "price_per_night": 100,
+      "room_size": "250 sq ft",
+      "image1": "https://i.ibb.co/M11kNHk/pexels-lachlan-ross-6510419.jpg",
+      "image2": "https://i.ibb.co/2t3wVtJ/pexels-max-rahubovskiy-7005280.jpg",
+      "booking_duration": "",
+      "special_offers": "10% off for 3+ nights",
+      "seat_count": 1,
+      "booking_status": "available"
+    },
+    {
+      "room_title": "Luxury Suite",
+      "room_description": "An opulent and spacious luxury suite with top-notch amenities. Perfect for a luxurious stay.",
+      "price_per_night": 300,
+      "room_size": "600 sq ft",
+      "image1": "https://i.ibb.co/L89LNJw/pexels-ben-mack-6775268.jpg",
+      "image2": "https://i.ibb.co/8mBf4NN/pexels-andrea-piacquadio-3837239.jpg",
+      "booking_duration": "",
+      "special_offers": "Free spa access",
+      "seat_count": 4,
+      "booking_status": "available"
+    },
+    {
+      "room_title": "Family Room",
+      "room_description": "A spacious family room with multiple beds and amenities for a comfortable family stay.",
+      "price_per_night": 200,
+      "room_size": "450 sq ft",
+      "image1": "https://i.ibb.co/V3DbcCD/pexels-houzlook-com-3797991.jpg",
+      "image2": "https://i.ibb.co/7CQ9w5v/pexels-bruce-clark-3701434.jpg",
+      "booking_duration": "",
+      "special_offers": "",
+      "seat_count": 6,
+      "booking_status": "available"
+    },
+    {
+      "room_title": "Economy Twin Room",
+      "room_description": "An affordable twin room with two beds and essential amenities. Great for budget travelers.",
+      "price_per_night": 80,
+      "room_size": "300 sq ft",
+      "image1": "https://i.ibb.co/M9SzQNQ/pexels-max-rahubovskiy-6316054.jpg",
+      "image2": "https://i.ibb.co/ZVRVcgh/pexels-curtis-adams-3773581.jpg",
+      "booking_duration": "",
+      "special_offers": "",
+      "seat_count": 2,
+      "booking_status": "available"
+    },
+    {
+      "room_title": "Honeymoon Suite",
+      "room_description": "A romantic and luxurious honeymoon suite with a king-sized bed and special amenities.",
+      "price_per_night": 400,
+      "room_size": "700 sq ft",
+      "image1": "https://i.ibb.co/LzQhWtm/pexels-burst-545043.jpg",
+      "image2": "https://i.ibb.co/KGZwQng/pexels-natasha-fernandez-1067560.jpg",
+      "booking_duration": "",
+      "special_offers": "Complimentary champagne",
+      "seat_count": 2,
+      "booking_status": "available"
+    },
+    {
+      "room_title": "Ocean View Room",
+      "room_description": "A room with a stunning ocean view and comfortable amenities for a relaxing stay.",
+      "price_per_night": 250,
+      "room_size": "500 sq ft",
+      "image1": "https://i.ibb.co/DY2FTjP/pexels-castorly-stock-3768256.jpg",
+      "image2": "https://i.ibb.co/4K44FWC/pexels-evgenia-basyrova-5028916.jpg",
+      "booking_duration": "",
+      "special_offers": "",
+      "seat_count": 2,
+      "booking_status": "available"
+    },
+    {
+      "room_title": "Executive Suite",
+      "room_description": "A spacious and elegant executive suite with modern amenities for a comfortable stay.",
+      "price_per_night": 350,
+      "room_size": "550 sq ft",
+      "image1": "https://i.ibb.co/tpbs7cP/female-executive-looks-out-modern-office-window.jpg",
+      "image2": "https://i.ibb.co/DgRn1qP/a-black-microphone-accompanied-by-a-notebook-and-vintage-camera.jpg",
+      "booking_duration": "",
+      "special_offers": "",
+      "seat_count": 2,
+      "booking_status": "available"
+    }
+  ]

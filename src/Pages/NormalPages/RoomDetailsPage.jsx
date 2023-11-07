@@ -9,13 +9,24 @@ import "swiper/css/pagination";
 import Error from "./Error";
 import { DatePicker } from "antd";
 import moment from "moment";
-import axios from "axios";
 import toast from "react-hot-toast";
+import useAxios from "../../Hooks/useAxios";
+import { useQuery } from "@tanstack/react-query";
 
 const RoomDetailsPage = () => {
   // const axios = useAxios();
   const params = useParams();
-  const { query , user } = useContext(AuthContext);
+  const {  user } = useContext(AuthContext);
+  // for fetching the data of room 
+  const axios = useAxios();
+  const getRoomsData =async () => {
+      const res =  axios.get('rooms')
+      return res ;
+  }
+  const query = useQuery({
+      queryKey: ['roomsData'],
+      queryFn: getRoomsData,
+  })
   const { data, isLoading, isError } = query;
   const [selectedDate, setSelectedDate] = useState(null);
   

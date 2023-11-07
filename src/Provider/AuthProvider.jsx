@@ -10,8 +10,7 @@ import {
   import { createContext, useEffect, useState } from 'react';
   import PropTypes from 'prop-types';
 import { auth } from '../config/firebase.config';
-import useAxios from '../Hooks/useAxios';
-import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
   
   export const AuthContext = createContext();
   const googleProvider = new GoogleAuthProvider();
@@ -39,14 +38,31 @@ import { useQuery } from '@tanstack/react-query';
   
     const logout = () => {
       setIsLoading(true);
+      console.log('kajhoseee')
       return signOut(auth);
     };
   
     useEffect(() => {
       
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        const userEmail = currentUser?.email || user?.email;
         setUser(currentUser);
+        const loggedUser = {email: userEmail}
         setIsLoading(false);
+        // if user exist then issue a token 
+        if(currentUser){
+          
+        axios.post('http://localhost:5000/api/v1/access-token',loggedUser,{ withCredentials : true })
+        .then(res  => {
+          console.log('token response',res.data)})
+        }
+        else{
+          axios.post('http://localhost:5000/api/v1/logout',loggedUser,{withCredentials:true})
+          .then(res =>{
+            console.log(res.data)
+          })
+        }
+        
       });
   
       return () => {
@@ -55,19 +71,8 @@ import { useQuery } from '@tanstack/react-query';
     }, []);
 
 
-    // for fetching the data of room 
-    const axios = useAxios();
-    const getRoomsData =async () => {
-        const res = await axios.get('rooms')
-        return res ;
-    }
-    const query = useQuery({
-        queryKey: ['roomsData'],
-        queryFn: getRoomsData,
-    })
-
-  
-    const values = { createUser, login, user, isLoading, logout, googleLogin , query };
+    
+    const values = { createUser, login, user, isLoading, logout, googleLogin  };
   
     return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
   };

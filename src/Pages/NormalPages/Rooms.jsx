@@ -1,17 +1,32 @@
-import { useContext } from "react";
+
 import Loading from "../../Components/Loading/Loading";
-import { AuthContext } from "../../Provider/AuthProvider";
 import RoomList from "./RoomList";
 import { Link } from "react-router-dom";
 import Error from "./Error";
 import { addDays, isBefore } from "date-fns";
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "../../Hooks/useAxios";
 
 const Rooms = () => {
   const presentDate = new Date();
   const tomorrow = addDays(presentDate,1)
-  console.log(isBefore(presentDate,tomorrow))
-  const { query } = useContext(AuthContext);
-  const { data, isLoading, isError} = query;
+  // console.log(isBefore(presentDate,tomorrow))
+  // for fetching the data of room 
+    const axios = useAxios();
+    const getRoomsData =async () => {
+        const res =  axios.get('rooms')
+        return res ;
+    }
+    const query = useQuery({
+        queryKey: ['roomsData'],
+        queryFn: getRoomsData,
+    })
+
+const {data,isLoading,isError} = query
+
+
+
+
   if (isLoading) {
     return (
       <div
@@ -36,10 +51,9 @@ const Rooms = () => {
         <RoomList></RoomList>
 
         {/* div for the room card */}
-        <div className="lg:grid flex flex-col justify-center  lg:grid-cols-2 gap-4 w-3/4">
+        <div className="lg:grid flex flex-col justify-center  lg:grid-cols-2 gap-4 lg:w-3/4">
           {allData.map(
             (singleData) =>
-              singleData?.booking_status === "available" && (
                 <div key={singleData._id}>
 
 
@@ -61,7 +75,7 @@ const Rooms = () => {
 
                   </Link>
                 </div>
-              )
+              
           )}
         </div>
       </div>

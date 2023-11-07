@@ -16,8 +16,7 @@ const Login = () => {
     const toastId = toast.loading('Logging in ...');
 
     try {
-      const user  = await login(email, password);
-      console.log(user.user.email)
+       await login(email, password);
     //   axios.post('/auth/access-token', {email : user.user.email} )
       toast.success('Logged in', { id: toastId });
       navigate('/');
