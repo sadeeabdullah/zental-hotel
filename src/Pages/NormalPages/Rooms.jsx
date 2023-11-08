@@ -1,11 +1,11 @@
 
-import Loading from "../../Components/Loading/Loading";
+
 // import RoomList from "./RoomList";
 import { Link } from "react-router-dom";
 import Error from "./Error";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hooks/useAxios";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 const Rooms = () => {
   // for filtering the rooms according the price range
@@ -21,7 +21,7 @@ const Rooms = () => {
   // for fetching the data of room 
     const axios = useAxios();
     const getRoomsData =async () => {
-        const res =  axios.get(`rooms?selectedValue=${selectedValue}`)
+        const res = await axios.get(`rooms?selectedValue=${selectedValue}`)
         return res ;
     }
     const query = useQuery({
@@ -45,7 +45,7 @@ const {data,isLoading,isError} = query
     return <Error></Error>;
   }
   const allData = data.data;
-  // console.log(allData)
+  console.log(allData)
   const filter100 = allData.filter(fil1=> fil1.price_per_night<200)
   // console.log(filter100)
   const filter200 = allData.filter(fil1=> fil1.price_per_night>200)

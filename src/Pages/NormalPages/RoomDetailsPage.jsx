@@ -20,7 +20,7 @@ const RoomDetailsPage = () => {
   // for fetching the data of room 
   const axios = useAxios();
   const getRoomsData =async () => {
-      const res =  axios.get('rooms')
+      const res =  axios.get(`rooms/${params.id}`)
       return res ;
   }
   const query = useQuery({
@@ -43,29 +43,16 @@ const RoomDetailsPage = () => {
   if (isError) {
     return <Error></Error>;
   }
-  const allData = data.data;
+  const allData = data?.data;
+  console.log(allData)
+  const{_id,room_title,room_description,price_per_night,room_size,image1,image2,special_offers,seat_count,booking_status,reviews} = allData
 
-  const findedRoom = allData.find((finded) => finded._id === params.id);
-  const {
-    _id,
-    room_title,
-    room_description,
-    price_per_night,
-    room_size,
-    image1,
-    image2,
-    seat_count,
-    special_offers,
-    booking_status,
-  } = findedRoom;
-
+  
 
     const handleDateChange = (date, dateString) => {
       setSelectedDate(dateString);
   }
 
-
-  // console.log(booking_duration);
   const handleBook = async () => {
     if(selectedDate !== null ){
       await axios.post("http://localhost:5000/api/v1/create-bookings", {
@@ -121,6 +108,7 @@ const RoomDetailsPage = () => {
 
 
   return (
+   
     <div className="w-[89vw] mx-auto">
       {/* for slider */}
       <div className="">
@@ -163,6 +151,11 @@ const RoomDetailsPage = () => {
         <p className="mb-1">
           <span className="font-bold ">Room Availability : </span>
           {booking_status}
+        </p>
+        
+        <p className="mb-1">
+          <span className="font-bold ">Room Availability : </span>
+          {reviews?.length}
         </p>
         <p className="mb-2">
           <span className="font-bold">Room Space : </span>

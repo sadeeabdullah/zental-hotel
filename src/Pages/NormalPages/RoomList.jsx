@@ -4,6 +4,7 @@ import useAxios from "../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 
 
+// eslint-disable-next-line no-unused-vars
 const RoomList = () => {
     const axios = useAxios();
     const getRoomsData =async () => {
@@ -32,7 +33,7 @@ const RoomList = () => {
         Available Rooms:
       </h2>
             {
-                    allData.map(singleData  =>
+                    allData?.map(singleData  =>
                         <div
                          key={singleData._id}>
                             <div >

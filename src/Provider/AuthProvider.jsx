@@ -18,6 +18,7 @@ import axios from 'axios';
   const AuthProvider = ({ children }) => {
     const [user, setUser] = useState();
     const [isLoading, setIsLoading] = useState(true);
+    const [result, setResult] = useState();
   
     const createUser = (email, password) => {
       setIsLoading(true);
@@ -78,11 +79,13 @@ const year = parseInt(parts[2], 10);
 return new Date(year, month, day);
 }
     
+const yesterDate = (originalDateString) =>{
+
+}
 
 
 
-
-    const values = { createUser, login, user, isLoading, logout, googleLogin,parseDate  };
+    const values = { createUser, login, user, isLoading, logout, googleLogin,parseDate,yesterDate,result  };
   
     return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
   };
