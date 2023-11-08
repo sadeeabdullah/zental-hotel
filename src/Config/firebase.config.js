@@ -3,16 +3,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
+console.log(import.meta.env.VITE_APIKEY)
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB0uhB680_8WroZkhdEOYwiYKwl6iVrgH8",
-  authDomain: "zenhotel-3e57c.firebaseapp.com",
-  projectId: "zenhotel-3e57c",
-  storageBucket: "zenhotel-3e57c.appspot.com",
-  messagingSenderId: "52169753739",
-  appId: "1:52169753739:web:39daeca848cafcf2ea408e"
-};
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain:import.meta.env.VITE_AUTHDOMAIN,
+  projectId:import.meta.env.VITE_PROJECTID,
+  storageBucket:import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId:import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

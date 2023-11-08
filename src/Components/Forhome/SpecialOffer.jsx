@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const SpecialOffer = () => {
   const [info,setInfo] = useState([])
-  const [found,setFound] = useState([])
   const [isLoading,setIsLoading] = useState(true)
   useEffect(() =>{
     fetch('http://localhost:5000/api/v1/rooms')
