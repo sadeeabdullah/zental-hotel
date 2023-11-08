@@ -4,7 +4,6 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Loading from "../../Components/Loading/Loading";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import useAxios from "../../Hooks/useAxios";
 import axios from "axios";
 
 const MyBookings = () => {
@@ -12,9 +11,9 @@ const MyBookings = () => {
     const [allData, setAllData] = useState()
     const [control,setControl] = useState(true)
     const [loading, setLoading] = useState(false)
-    // const axios = useAxios();
+    
 
-
+    
 
   useEffect(()=>{
     setLoading(true)
@@ -130,13 +129,16 @@ const MyBookings = () => {
                   }
                   
                     <p className="text-semibold mt-2  font-semibold">charges: <span className="font-bold text-xl text-red-600">{d.price_per_night} $ </span></p>
+                    <p className=""><span className="text-semibold mt-2  font-semibold">Booking for : </span>{d.booking_duration} (single Day)</p>
                     
                   <p className="mb-4">{d.room_description.length > 92 ? d.room_description.slice(5,69) : d.room_description}</p>
                   <div className=" grid grid-cols-3 gap-2 pb-4 pr-4">
                     
-                      <Link to={`/rooms/${d._id}`}>
-                  <button href="#" className=" text-lg text-white bg-[#074468] hover:bg-[#152a36] px-4 py-2 rounded-xl  relative">Review</button>
-                  </Link>
+                  
+                  <button
+                  onClick={()=>document.getElementById('my_modal_5').showModal()}
+                   className=" text-lg text-white bg-[#074468] hover:bg-[#152a36] px-4 py-2 rounded-xl  relative">Review</button>
+                  
                       <Link to={`/rooms/${d._id}`}>
                   <button href="#" className=" text-lg text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-xl  relative">Update</button>
                   </Link>
@@ -148,9 +150,88 @@ const MyBookings = () => {
                   </div>
                 </div>
               </div>
+
+
+
+
+                  {/* for modal */}
+<dialog id="my_modal_5" className="modal modal-bottom  sm:modal-middle">
+  <div className="modal-box bg-gradient-to-br from-[#85c2e5] via-gray-200 to-[#f16f6e]">
+
+    {/* for user name and time stamp */}
+    <div>
+      <label className="block mb-2 text-sm font-medium text-[#074468] dark:text-white" htmlFor="User Name">User Name</label>
+      <input defaultValue={user?.displayName?  user.displayName : ""}
+      className="bg-gray-50 mb-4 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+       type="text" name=""  placeholder="User Name" id="" />
+      
+          
+          <label  className="block mb-2 text-sm font-medium text-[#074468] dark:text-white" htmlFor="Reservation Time">Reservation Time</label>
+            <input defaultValue={d.booking_duration}
+            className="bg-gray-50 border mb-4 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+             type="text" name=""  placeholder="Reservation Time" id="" />
+          
+    </div>
+
+          {/* for rating and comment */}
+
+          <div className="mb-8">
+      <label className="block mb-2 text-sm font-medium text-[#074468] dark:text-white" htmlFor="User Name">User Name</label>
+      <input defaultValue={5}
+      className="bg-gray-50 mb-4 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+       type="text" name=""  placeholder="Review us" id="" />
+      
+          
+          <label  className="block mb-2 text-sm font-medium text-[#074468] dark:text-white" htmlFor="Comment">Comment</label>
+            <input 
+            className="bg-gray-50 mb-4 border  h-[100px] border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+             type="text" name=""  placeholder="Write you comment here" id="" />
+          
+    </div>
+
+
+
+
+
+    {/* for buttons */}
+  <div className="">
+      <form method="dialog"  className="flex justify-center gap-8">
+        {/* if there is a button in form, it will close the modal */}
+        <button
+         className="btn  bg-[#eb5b5b] text-white border-0 hover:bg-[#ca3232]">Post Review</button>
+        <button className="btn">Cancel</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+
+
+
+
+
+
                     </div>
+                    
+
+
+
+
+
+
+                    
             ))
           }
+
+          
+
+
+
+
+
+
+
+
         </div>
     );
 };

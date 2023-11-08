@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Loading from "../../Components/Loading/Loading";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -14,6 +14,7 @@ import useAxios from "../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 
 const RoomDetailsPage = () => {
+  const Navigate = useNavigate();
   const params = useParams();
   const {  user } = useContext(AuthContext);
   // for fetching the data of room 
@@ -67,6 +68,7 @@ const RoomDetailsPage = () => {
       })
       .then(res => {if(res.status === 200){
         toast.success("Successfully booked")
+        Navigate('/mybookings')
       }})
       .then(err => console.log(err))
 
