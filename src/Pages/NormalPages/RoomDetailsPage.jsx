@@ -14,7 +14,6 @@ import useAxios from "../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 
 const RoomDetailsPage = () => {
-  // const axios = useAxios();
   const params = useParams();
   const {  user } = useContext(AuthContext);
   // for fetching the data of room 
@@ -80,30 +79,15 @@ const RoomDetailsPage = () => {
 
 
 
-      // for updating while the room is booked
-
     }
 
     else{
       toast.error('please select a date')
     }
     
-    
-    
-    // update bookings
   };
 
-  // if the booking date over then a  patch request will be send to the database and set the booking status available
-
-  // to pick present date
-  // const presentDate = new Date();
-
-  // if(selectedDate){
-  //   const selectedDateStr = selectedDate;
-  // const selected = parseDate(selectedDateStr)
-  // console.log(selected)
-  // }
-  // console.log(isBefore(presentDate,tomorrow))
+  
 
 
 

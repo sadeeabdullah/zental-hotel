@@ -4,13 +4,15 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Loading from "../../Components/Loading/Loading";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxios from "../../Hooks/useAxios";
+import axios from "axios";
 
 const MyBookings = () => {
-    const {user,parseDate,yesterDate} =useContext(AuthContext)
+    const {user,parseDate} =useContext(AuthContext)
     const [allData, setAllData] = useState()
     const [control,setControl] = useState(true)
     const [loading, setLoading] = useState(false)
-    const [result, setResult] = useState()
+    // const axios = useAxios();
 
 
 
@@ -31,7 +33,7 @@ const MyBookings = () => {
 
 
 
-  const handleDelete = (id, date) => {
+  const handleDelete = (id, date,image1) => {
     const duration = parseDate(date);
     const today = new Date();
     console.log(today, 'today');
@@ -71,6 +73,13 @@ const MyBookings = () => {
           .then(data => {
             if(data.deletedCount > 0){
               setControl(!control)
+              axios.patch("http://localhost:5000/api/v1/delete",{
+        availiblity : "available",
+        image: image1,
+      })
+      .then(res => console.log(res))
+      
+      .then(err =>console.log(err))
             }})
           Swal.fire({
             title: "Deleted!",
@@ -132,7 +141,7 @@ const MyBookings = () => {
                   <button href="#" className=" text-lg text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-xl  relative">Update</button>
                   </Link>
                       
-                  <button onClick={()=>handleDelete(d._id,d.booking_duration)} className=" text-lg ml-4 text-white bg-[#f16f6e] hover:bg-[#f16f6e] px-4 py-2 rounded-xl  relative">Delete</button>
+                  <button onClick={()=>handleDelete(d._id,d.booking_duration,d.image1)} className=" text-lg ml-4 text-white bg-[#f16f6e] hover:bg-[#f16f6e] px-4 py-2 rounded-xl  relative">Delete</button>
                   
                   
                   
