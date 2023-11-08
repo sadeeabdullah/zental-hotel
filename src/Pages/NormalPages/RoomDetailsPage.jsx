@@ -59,7 +59,6 @@ const RoomDetailsPage = () => {
     booking_status,
   } = findedRoom;
 
-// for date  picker
 
     const handleDateChange = (date, dateString) => {
       setSelectedDate(dateString);
@@ -106,6 +105,20 @@ const RoomDetailsPage = () => {
     
     // update bookings
   };
+
+  // if the booking date over then a  patch request will be send to the database and set the booking status available
+
+  // to pick present date
+  // const presentDate = new Date();
+
+  // if(selectedDate){
+  //   const selectedDateStr = selectedDate;
+  // const selected = parseDate(selectedDateStr)
+  // console.log(selected)
+  // }
+  // console.log(isBefore(presentDate,tomorrow))
+
+
 
   return (
     <div className="w-[89vw] mx-auto">
@@ -170,12 +183,17 @@ const RoomDetailsPage = () => {
       format="DD-MM-YYYY"
     />
         </p>
-        <button
+        {
+          booking_status === 'available'? <button
           onClick={()=>document.getElementById('my_modal_5').showModal()}
           className="  text-white bg-[#f16f6e] hover:bg-[#f16f6e] px-4 py-2 rounded-xl  relative"
         >
-          Book Now
-        </button>
+          Review Details
+        </button> 
+        :
+        <button className=" text-white bg-[#f16f6e] hover:bg-[#f16f6e] px-4 py-2 rounded-xl  relative disabled">Not Available</button>
+        }
+        
         
       </div>
 

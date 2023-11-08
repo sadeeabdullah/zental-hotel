@@ -38,7 +38,6 @@ import axios from 'axios';
   
     const logout = () => {
       setIsLoading(true);
-      console.log('kajhoseee')
       return signOut(auth);
     };
   
@@ -70,9 +69,20 @@ import axios from 'axios';
       };
     }, []);
 
-
+// to parse the selected date and compare 
+const parseDate = (selectedDateStr) =>{
+  const parts = selectedDateStr.split('-')
+  const day = parseInt(parts[0], 10);
+const month = parseInt(parts[1] - 1, 10); // Months are 0-indexed
+const year = parseInt(parts[2], 10);
+return new Date(year, month, day);
+}
     
-    const values = { createUser, login, user, isLoading, logout, googleLogin  };
+
+
+
+
+    const values = { createUser, login, user, isLoading, logout, googleLogin,parseDate  };
   
     return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
   };

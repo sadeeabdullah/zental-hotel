@@ -45,5 +45,3 @@ const RoomList = () => {
         </div>
     );
 };
-
-export default RoomList;

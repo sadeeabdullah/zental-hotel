@@ -16,7 +16,6 @@ const SpecialOffer = () => {
     return <Loading></Loading>
   }
 
-  console.log(info)
     return (
       <div>
                   <h2 className="text-4xl text-[#08476b] text-center mb-6 font-bold">Special offers</h2>
@@ -32,12 +31,27 @@ const SpecialOffer = () => {
               <figure className="h-48"><img src={d.image1} alt="Shoes" /></figure>
               <div className="p-4  ">
                 <h2 className="text-[#08476b] text-2xl font-semibold">{d.room_title}</h2>
-                <p className="text-[#f16f6e] mb-2 text-lg font-medium">{d.special_offers}</p>
-                <p className="text-semibold font-semibold">charges: <span className="font-bold text-xl text-red-600">{d.price_per_night} $ </span></p>
+                <p className="text-[#f16f6e]  text-lg font-medium">{d.special_offers}</p>
+                {
+                  d.booking_status === 'available' ?
+                  <p className="text-semibold mt-2  font-semibold">charges: <span className="font-bold text-xl text-red-600">{d.price_per_night} $ </span></p>
+                  :
+                  <p className="text-red-900 mt-4  text-sm">Room unavailable. Check alternatives.</p>
+                }
                 <p className="mb-4">{d.room_description.length > 92 ? d.room_description.slice(5,69) : d.room_description}</p>
                 <div className=" flex justify-end pb-4 pr-4">
-                <Link to={`/rooms/${d._id}`}>
-                <button href="#" className=" text-lg text-white bg-[#f16f6e] hover:bg-[#f16f6e] px-4 py-2 rounded-xl  relative">Book Now</button></Link>
+                  {
+                    d.booking_status === 'available' ?
+                    <Link to={`/rooms/${d._id}`}>
+                <button href="#" className=" text-lg text-white bg-[#f16f6e] hover:bg-[#f16f6e] px-4 py-2 rounded-xl  relative">Book Now</button>
+                </Link>
+                :
+                <Link to='rooms'>
+                
+                <button className="text-lg text-white bg-[#f16f6e] hover:bg-[#f16f6e] px-4 py-2 rounded-xl  relative">Explore more</button>
+                </Link>
+                  }
+                
                 </div>
               </div>
             </div>
