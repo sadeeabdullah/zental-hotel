@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Loading from "../../Components/Loading/Loading";
@@ -46,6 +47,7 @@ const RoomDetailsPage = () => {
   const allData = data?.data;
   console.log(allData)
   const{_id,room_title,room_description,price_per_night,room_size,image1,image2,special_offers,seat_count,booking_status,reviews} = allData
+  
 
   
 
@@ -74,6 +76,7 @@ const RoomDetailsPage = () => {
 
       axios.patch("http://localhost:5000/api/v1/booked",{
         availiblity : "unavailble",
+        booking_duration: selectedDate,
         id: _id,
       })
       .then(res => console.log(res))
@@ -140,7 +143,7 @@ const RoomDetailsPage = () => {
         </p>
         
         <p className="mb-1">
-          <span className="font-bold ">Room Availability : </span>
+          <span className="font-bold ">Review Count : </span>
           {reviews?.length}
         </p>
         <p className="mb-2">
@@ -213,6 +216,52 @@ const RoomDetailsPage = () => {
     </div>
   </div>
 </dialog>
+
+
+
+{/* for reviews */}
+
+<div className="space-y-4 mb-16">
+<h1 className="text-center  font-semibold text-[#08476b] text-4xl"> Customer Review</h1>
+<div className="bg-gray-200 p-4">
+{/* if no review available */}
+  {
+    reviews?.length === 0 && <div>
+      <p className="text-center  font-medium text-[#f77570]">Currently, there are no reviews for this hotel room. Your feedback can help others make an informed decision.</p>
+    </div>
+  }
+{/* div for mapping */}
+<div className="grid-cols-1 gap-4">
+{
+ reviews?.length >0 && reviews?.map(r=>(
+  <div>
+  {/* div for card  */}
+  <div className="pl-20 p-8 mb-8 bg-gray-300">
+    {/* div for image */}
+    <div className=" flex flex-col md:flex-row mb-4  ">
+      <img className="rounded-full h-20 w-20" src={r.reviewer_data.photoURL} alt="" />
+      <p className="font-semibold text-lg">
+    {r.review_owner}
+    </p>
+    </div>
+    
+    <p><span className="font-semibold">rated : </span>
+    {r.rating}
+    </p>
+    <p><span className="font-semibold">Stayed for : </span> {r.dateOfBooking} (Single day)</p>
+    <p><span className="font-semibold">What he/she says : </span>{r.comment}</p>
+
+  </div>
+</div>
+ ))
+}
+</div>
+
+    
+  </div>
+</div>
+
+
     </div>
   );
 };

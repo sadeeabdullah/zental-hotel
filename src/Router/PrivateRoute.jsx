@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import useAuth from "../Hooks/useAuth";
 import Loading from "../Components/Loading/Loading";
@@ -6,7 +7,7 @@ import { Navigate, useLocation } from "react-router-dom";
 const PrivateRoute = ({children}) => {
     const { user, isLoading} = useAuth()
     const location =  useLocation();
-    console.log(location)
+    // console.log(location)
     if(isLoading){
         return <Loading></Loading>
     }

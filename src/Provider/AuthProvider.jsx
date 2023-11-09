@@ -68,6 +68,7 @@ import axios from 'axios';
         return unsubscribe();
       };
     }, []);
+    
 
 // to parse the selected date and compare 
 const parseDate = (selectedDateStr) =>{

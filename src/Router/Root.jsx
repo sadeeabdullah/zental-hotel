@@ -8,6 +8,7 @@ import Rooms from "../Pages/NormalPages/Rooms";
 import RoomDetailsPage from "../Pages/NormalPages/RoomDetailsPage";
 import Error from "../Pages/NormalPages/Error";
 import PrivateRoute from "./PrivateRoute";
+import AddReview from "../Pages/NormalPages/AddReview";
 
 const routes = createBrowserRouter([
     {
@@ -32,8 +33,8 @@ const routes = createBrowserRouter([
             element: <PrivateRoute><MyBookings /></PrivateRoute>,
           },
           {
-            path: 'services',
-            // element: <Services />,
+            path: 'addReview/:id',
+            element:<PrivateRoute> <AddReview /></PrivateRoute>,
           },
           
         ],

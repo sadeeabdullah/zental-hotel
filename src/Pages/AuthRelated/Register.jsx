@@ -3,14 +3,18 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
 const Register = () => {
     const [email,setEmail] = useState()
     const [password,setPassword] = useState()
     const [confirm,setConfirm] = useState()
+    const [name,setName] = useState();
+    const [image , setImage] = useState();
     const { createUser, googleLogin } = useAuth();
     const navigate = useNavigate();
     
 
+    console.log(name,image)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,9 +27,20 @@ const Register = () => {
         const toastId = toast.loading('Creating user ...');
     
         try {
-          await createUser(email, password);
-          toast.success('User Created', { id: toastId });
+          await createUser(email, password)
+          .then(res=> {
+            updateProfile(res.user,{
+              displayName:name,
+              photoURL:image
+            })
+            .then(()=>{
+              
+              toast.success('User Created', { id: toastId });
           navigate('/');
+            }
+            )
+          })
+          
         } catch (error) {
           console.log(error);
           toast.error(error.message, { id: toastId });
@@ -54,10 +69,22 @@ const Register = () => {
               onSubmit={handleSubmit}
                className="space-y-4 md:space-y-6" action="#">
                   <div>
-                      <label form="email" className="block mb-2 text-sm font-medium text-[#074468] dark:text-white">Your email</label>
+                      <label form="email" className="block mb-2 text-sm font-medium text-[#074468] dark:text-white">Your Name</label>
+                      <input
+                      onChange={(e)=>setName(e.target.value)}
+                       type="text" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your Name" required=""/>
+                  </div>
+                  <div>
+                  <label form="email" className="block mb-2 text-sm font-medium text-[#074468] dark:text-white">Your Email</label>
                       <input
                       onChange={(e)=>setEmail(e.target.value)}
-                       type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required=""/>
+                       type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your Email" required=""/>
+                  </div>
+                  <div>
+                      <label form="email" className="block mb-2 text-sm font-medium text-[#074468] dark:text-white">Image URL</label>
+                      <input
+                      onChange={(e)=>setImage(e.target.value)}
+                       type="text" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Image URL" required=""/>
                   </div>
                   <div>
                       <label form="password" className="block mb-2 text-sm font-medium text-[#074468] dark:text-white">Password</label>
