@@ -50,7 +50,6 @@ console.log(findOne)
         }
 
         
-console.log(user)
 
 
         axios.patch("http://localhost:5000/api/v1/review-post",{

@@ -38,7 +38,7 @@ const SpecialOffer = () => {
                   :
                   <p className="text-red-900 mt-4  text-sm">Room unavailable. Check alternatives.</p>
                 }
-                <p className="mb-4">{d.room_description.length > 92 ? d.room_description.slice(5,69) : d.room_description}</p>
+                <p className="mb-4">{d?.room_description?.length > 92 ? d.room_description.slice(5,69) : d.room_description}</p>
                 <div className=" flex justify-end pb-4 pr-4">
                   {
                     d.booking_status === 'available' ?

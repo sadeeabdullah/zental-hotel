@@ -173,7 +173,10 @@ const RoomDetailsPage = () => {
           Review Details
         </button> 
         :
-        <button className=" text-white bg-[#f16f6e] hover:bg-[#f16f6e] px-4 py-2 rounded-xl  relative disabled">Not Available</button>
+        <div className="flex gap-4">
+          <button className=" text-white bg-[#f16f6e] hover:bg-[#f16f6e] px-4 py-2 rounded-xl  relative disabled">Not Available</button>
+          <button className=" text-white bg-emarald-500 hover:bg-emarald-600 px-4 py-2 rounded-xl  relative">See Others</button>
+        </div>
         }
         
         

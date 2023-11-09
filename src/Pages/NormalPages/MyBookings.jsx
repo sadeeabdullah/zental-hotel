@@ -7,23 +7,13 @@ import Loading from "../../Components/Loading/Loading";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { DatePicker } from "antd";
-import moment from "moment";
 
 const MyBookings = () => {
     const {user,parseDate} =useContext(AuthContext)
     const [allData, setAllData] = useState()
     const [control,setControl] = useState(true)
     const [loading, setLoading] = useState(false)
-    const [selectedDate, setSelectedDate] = useState(null);
-
-
-    
-    
-    const handleDateChange = (date, dateString) => {
-      setSelectedDate(dateString);
-  }
-
+console.log(user)
     
 
   useEffect(()=>{
@@ -35,7 +25,7 @@ const MyBookings = () => {
       setLoading(false)
     })
     
-  },[control,user])
+  },[])
   
 
 
@@ -152,9 +142,9 @@ const MyBookings = () => {
                   </Link>
                   
                     
-                  <button 
-                  onClick={()=>document.getElementById('my_modal_5').showModal()}
-                   className=" text-lg text-white bg-emerald-500 hover:bg-emerald-600 px-4 py-2 rounded-xl  relative">Update Date</button>
+                  <Link to={`/update-booking-date/${d._id}`}>
+                  <button  className=" text-lg text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-xl  relative">Update Date</button>
+                  </Link>
                   
                       
                   <button
@@ -166,26 +156,6 @@ const MyBookings = () => {
                   </div>
                 </div>
               </div>
-
-
-
-
-                  {/* for modal */}
-<dialog id="my_modal_5" className="modal modal-bottom  sm:modal-middle">
-  <div className="modal-box bg-gradient-to-br from-[#85c2e5] via-gray-200 to-[#f16f6e]">
-
-  <p className="inline-block w-full mb-4">
-          <span className="font-bold">Booking date : </span>
-          <DatePicker
-      onChange={handleDateChange}
-      value={selectedDate ? moment(selectedDate, 'DD-MM-YYYY') : null}
-      format="DD-MM-YYYY"
-    />
-        </p>
-  </div>
-</dialog>
-
-
 
 
 
