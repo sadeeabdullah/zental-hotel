@@ -1,10 +1,10 @@
-
+import newsletterImage from '../../assets/image/83316929_2308-w030-n003-822B-p15-822-removebg-preview.png'
 const Newsletter = () => {
     return (
         <div className="flex flex-col mt-32 mb-20 lg:flex-row w-[89vw] mx-auto bg-gray-50 rounded-lg  shadow-xl p-4 lg:p-8  bg-gradient-to-br from-[#85c2e5] via-gray-200 to-[#f16f6e] lg:justify-center">
             {/* div for image in the left side */}
             <div className="lg:w-1/3 ">
-                <img className="w-full" src="src/assets/image/83316929_2308-w030-n003-822B-p15-822-removebg-preview.png" alt="" />
+                <img className="w-full" src={newsletterImage} alt="" />
             </div>
 
             {/* div for the right input field to get updated from the email */}

@@ -17,7 +17,6 @@ const Rooms = () => {
 
   }
   
-  console.log(selectedValue)
   // for fetching the data of room 
     const axios = useAxios();
     const getRoomsData =async () => {

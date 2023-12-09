@@ -1,12 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
+import navImage from '../assets/image/logo-20230222101241.svg'
 
 const Navbar = () => {
 //   const { user, logout } = useAuth();
 const { user, logout } = useAuth();
 return (
     
-      <div className=" w-full max-w-[1250px] px-[25px] mx-auto ">
+      <div className=" w-full max-w-[89vw] px-[25px] mx-auto ">
       <div className="flex-none lg:hidden">
         <label
           htmlFor="my-drawer-3"
@@ -29,7 +30,7 @@ return (
         </label>
       </div>
       <div className="flex-1 text-xl ">
-        <img src="src/assets/image/logo-20230222101241.svg" alt="" />
+        <img src={navImage} alt="" />
       </div>
       <div className="flex-none hidden lg:block">
         <div className="flex items-center gap-2">

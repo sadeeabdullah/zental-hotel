@@ -15,7 +15,7 @@ const AddReview = () => {
     const [loading, setLoading] = useState(true)
     useEffect(()=>{
         setLoading(true)
-        fetch(`http://localhost:5000/api/v1/bookings?email=${user?.email}`,{credentials:"include"})
+        fetch(`https://zenhotel-server.vercel.app/api/v1/bookings?email=${user?.email}`,{credentials:"include"})
         .then(res =>res.json())
         .then(data => {
           setAllData(data)
@@ -52,7 +52,7 @@ console.log(findOne)
         
 
 
-        axios.patch("http://localhost:5000/api/v1/review-post",{
+        axios.patch("https://zenhotel-server.vercel.app/api/v1/review-post",{
         reviews : reviews,
         id: findOne.image1,
       })

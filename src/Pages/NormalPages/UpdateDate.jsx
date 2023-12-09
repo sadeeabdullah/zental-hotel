@@ -28,7 +28,7 @@ const UpdateDate = () => {
   }
     useEffect(()=>{
         setLoading(true)
-        fetch(`http://localhost:5000/api/v1/bookings?email=${user?.email}`,{credentials:"include"})
+        fetch(`https://zenhotel-server.vercel.app/api/v1/bookings?email=${user?.email}`,{credentials:"include"})
         .then(res =>res.json())
         .then(data => {
           setAllData(data)
@@ -52,7 +52,7 @@ const {_id,room_title} = findOne
     //   update date in database
     
 const handleUpate = () =>{
-    axios.patch("http://localhost:5000/api/v1/update-booking-date",{
+    axios.patch("https://zenhotel-server.vercel.app/api/v1/update-booking-date",{
         id : _id,
         selectedDate :selectedDate
       })

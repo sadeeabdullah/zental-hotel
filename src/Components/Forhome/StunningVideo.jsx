@@ -1,9 +1,10 @@
 
+import video from '../../assets/image/pexels-cottonbro-7507165 (Original).mp4'
 const StunningVideo = () => {
     return (
         <div className=" mx-auto relative  mb-12">
             <video autoPlay loop muted playsInline className="" >
-                <source src="src/assets/image/pexels-cottonbro-7507165 (Original).mp4" type="video/mp4"/>
+                <source src={video} type="video/mp4"/>
             </video>
             <div className="absolute inset-0
             

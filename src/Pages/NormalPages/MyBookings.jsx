@@ -18,16 +18,17 @@ console.log(user)
 
   useEffect(()=>{
     setLoading(true)
-    fetch(`http://localhost:5000/api/v1/bookings?email=${user?.email}`,{credentials:"include"})
+    fetch(`https://zenhotel-server.vercel.app/api/v1/bookings?email=${user?.email}`,{credentials:"include"})
     .then(res =>res.json())
     .then(data => {
       setAllData(data)
       setLoading(false)
     })
     
-  },[])
+  },[control])
   
 
+  console.log(allData)
 
 // handleReview
 
@@ -66,14 +67,14 @@ console.log(user)
       }).then((result) => {
        
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/api/v1/delete-booking/${id}`,{
+          fetch(`https://zenhotel-server.vercel.app/api/v1/delete-booking/${id}`,{
             method:"DELETE",
           })
           .then(res => res.json())
           .then(data => {
             if(data.deletedCount > 0){
               setControl(!control)
-              axios.patch("http://localhost:5000/api/v1/delete",{
+              axios.patch("https://zenhotel-server.vercel.app/api/v1/delete",{
         availiblity : "available",
         image: image1,
       })

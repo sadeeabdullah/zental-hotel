@@ -22,23 +22,23 @@ const routes = createBrowserRouter([
             element: <Home />,
           },
           {
-            path: 'rooms',
+            path: '/rooms',
             element: <Rooms />,
           },
           {
-            path:'rooms/:id',
+            path:'/rooms/:id',
             element: <RoomDetailsPage></RoomDetailsPage>
           },
           {
-            path: 'mybookings',
+            path: '/mybookings',
             element: <PrivateRoute><MyBookings /></PrivateRoute>,
           },
           {
-            path: 'addReview/:id',
+            path: '/addReview/:id',
             element:<PrivateRoute> <AddReview /></PrivateRoute>,
           },
           {
-            path: 'update-booking-date/:id',
+            path: '/update-booking-date/:id',
             element:<PrivateRoute><UpdateDate></UpdateDate></PrivateRoute>
           }
           

@@ -51,12 +51,12 @@ import axios from 'axios';
         // if user exist then issue a token 
         if(currentUser){
           
-        axios.post('http://localhost:5000/api/v1/access-token',loggedUser,{ withCredentials : true })
+        axios.post('https://zenhotel-server.vercel.app/api/v1/access-token',loggedUser,{ withCredentials : true })
         .then(res  => {
           console.log('token response',res.data)})
         }
         else{
-          axios.post('http://localhost:5000/api/v1/logout',loggedUser,{withCredentials:true})
+          axios.post('https://zenhotel-server.vercel.app/api/v1/logout',loggedUser,{withCredentials:true})
           .then(res =>{
             console.log(res.data)
           })

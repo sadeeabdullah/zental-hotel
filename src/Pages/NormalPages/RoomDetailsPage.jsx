@@ -2,7 +2,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Loading from "../../Components/Loading/Loading";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -57,7 +57,7 @@ const RoomDetailsPage = () => {
 
   const handleBook = async () => {
     if(selectedDate !== null ){
-      await axios.post("http://localhost:5000/api/v1/create-bookings", {
+      await axios.post("https://zenhotel-server.vercel.app/api/v1/create-bookings", {
         room_title : room_title,
         room_description : room_description,
         price_per_night : price_per_night,
@@ -74,7 +74,7 @@ const RoomDetailsPage = () => {
       }})
       .then(err => console.log(err))
 
-      axios.patch("http://localhost:5000/api/v1/booked",{
+      axios.patch("https://zenhotel-server.vercel.app/api/v1/booked",{
         availiblity : "unavailble",
         booking_duration: selectedDate,
         id: _id,
@@ -175,7 +175,9 @@ const RoomDetailsPage = () => {
         :
         <div className="flex gap-4">
           <button className=" text-white bg-[#f16f6e] hover:bg-[#f16f6e] px-4 py-2 rounded-xl  relative disabled">Not Available</button>
-          <button className=" text-white bg-emarald-500 hover:bg-emarald-600 px-4 py-2 rounded-xl  relative">See Others</button>
+          <Link to='/rooms'>
+          <button className=" text-white bg-emerald-500 hover:bg-emerald-600 px-4 py-2 rounded-xl  relative">See Others</button>
+          </Link>
         </div>
         }
         

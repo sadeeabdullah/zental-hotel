@@ -1,4 +1,5 @@
 import { GrFacebook, GrTwitter, GrLinkedin } from 'react-icons/gr';
+import footerImage from "../assets/image/logo-20230222101241.svg"
 import Container from './Container';
 const Footer = () => {
   return (
@@ -6,7 +7,7 @@ const Footer = () => {
       <div className="flex flex-col lg:flex-row justify-between gap-10">
         <div>
           <h1 className=" mb-2">
-            <img src="src/assets/image/logo-20230222101241.svg" alt="" />
+            <img src={footerImage} alt="" />
           </h1>
           <p className="max-w-[35ch] font-medium">
           Discover tranquility and comfort with ZenHotel, your gateway to serenity. Unwind in our meticulously designed rooms and book your perfect stay today. Immerse yourself in the art of relaxation with ZenHotel – Where Peace Meets Luxury.
